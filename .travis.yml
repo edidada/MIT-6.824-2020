@@ -1,11 +1,10 @@
-language: cpp
+language: go
 sudo: required
 dist: xenial
-compiler:
-  - gcc
-  #- clang
 os:
   - linux
+go:
+  - "1.13"
 install:
   - pwd
 before_script:
@@ -18,5 +17,8 @@ env:
   - BUILD_TYPE=debug
  # - BUILD_TYPE=release
 script:
-  - chmod +x Makefile
-  - ./Makefile
+  - cd src/main
+  - go build -buildmode=plugin ../mrapps/wc.go
+  - rm mr-out*
+  - go run mrsequential.go wc.so pg*.txt
+  - more mr-out-0
