@@ -20,13 +20,5 @@ env:
   - BUILD_TYPE=debug
  # - BUILD_TYPE=release
 script:
-  - cd src/main
-  - go build -buildmode=plugin ../mrapps/wc.go
-  - rm mr-out*
-  - go run mrsequential.go wc.so pg*.txt
-#  - more mr-out-0
-  - go build -buildmode=plugin ../mrapps/wc.go
-  - rm mr-out*
-#  - go run mrmaster.go pg-*.txt
-#  - go run mrworker.go wc.so
-  - sh ./test-mr.sh
+  - cd src/raft
+  - go test
