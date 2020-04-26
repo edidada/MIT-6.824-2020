@@ -1,0 +1,21 @@
+language: cpp
+sudo: required
+dist: xenial
+compiler:
+  - gcc
+  #- clang
+os:
+  - linux
+install:
+  - pwd
+before_script:
+  - pwd
+addons:
+  apt:
+    update: true
+
+env:
+  - BUILD_TYPE=debug
+ # - BUILD_TYPE=release
+script:
+  - make VERBOSE=1
