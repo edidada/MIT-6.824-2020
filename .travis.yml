@@ -9,7 +9,9 @@ install:
   - pwd
 before_script:
   - pwd
-  - export GOPATH=/home/travis/gopath/src/github.com/edidada/MIT-6.824-2020/src
+  - currpath=`pwd`
+    srcpath=${currpath%/src*}
+  - export GOPATH=${currpath}:$GOPATH
 addons:
   apt:
     update: true
